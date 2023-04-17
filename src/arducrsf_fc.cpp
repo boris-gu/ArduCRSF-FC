@@ -1,5 +1,5 @@
 #include <Arduino.h>
-#include "crsf_bg_fc.h"
+#include "arducrsf_fc.h"
 // =======
 // PUBLIC
 // =======
@@ -88,22 +88,22 @@ bool CRSF_FC::get_rc_channels(crsf_rc_channels *pkt, bool to_fc_range)
         pkt->len = *rx.len;
         pkt->type = *rx.type;
 
-        pkt->ch[0] = ((rx.packet[3] | rx.packet[4] << 8) & 0x07FF);
-        pkt->ch[1] = ((rx.packet[4] >> 3 | rx.packet[5] << 5) & 0x07FF);
-        pkt->ch[2] = ((rx.packet[5] >> 6 | rx.packet[6] << 2 | rx.packet[7] << 10) & 0x07FF);
-        pkt->ch[3] = ((rx.packet[7] >> 1 | rx.packet[8] << 7) & 0x07FF);
-        pkt->ch[4] = ((rx.packet[8] >> 4 | rx.packet[9] << 4) & 0x07FF);
-        pkt->ch[5] = ((rx.packet[9] >> 7 | rx.packet[10] << 1 | rx.packet[11] << 9) & 0x07FF);
-        pkt->ch[6] = ((rx.packet[11] >> 2 | rx.packet[12] << 6) & 0x07FF);
-        pkt->ch[7] = ((rx.packet[12] >> 5 | rx.packet[13] << 3) & 0x07FF);
-        pkt->ch[8] = ((rx.packet[14] | rx.packet[15] << 8) & 0x07FF);
-        pkt->ch[9] = ((rx.packet[15] >> 3 | rx.packet[16] << 5) & 0x07FF);
-        pkt->ch[10] = ((rx.packet[16] >> 6 | rx.packet[17] << 2 | rx.packet[18] << 10) & 0x07FF);
-        pkt->ch[11] = ((rx.packet[18] >> 1 | rx.packet[19] << 7) & 0x07FF);
-        pkt->ch[12] = ((rx.packet[19] >> 4 | rx.packet[20] << 4) & 0x07FF);
-        pkt->ch[13] = ((rx.packet[20] >> 7 | rx.packet[21] << 1 | rx.packet[22] << 9) & 0x07FF);
-        pkt->ch[14] = ((rx.packet[22] >> 2 | rx.packet[23] << 6) & 0x07FF);
-        pkt->ch[15] = ((rx.packet[23] >> 5 | rx.packet[24] << 3) & 0x07FF);
+        pkt->ch[0] = ((rx.payload[0] | rx.payload[1] << 8) & 0x07FF);
+        pkt->ch[1] = ((rx.payload[1] >> 3 | rx.payload[2] << 5) & 0x07FF);
+        pkt->ch[2] = ((rx.payload[2] >> 6 | rx.payload[3] << 2 | rx.payload[4] << 10) & 0x07FF);
+        pkt->ch[3] = ((rx.payload[4] >> 1 | rx.payload[5] << 7) & 0x07FF);
+        pkt->ch[4] = ((rx.payload[5] >> 4 | rx.payload[6] << 4) & 0x07FF);
+        pkt->ch[5] = ((rx.payload[6] >> 7 | rx.payload[7] << 1 | rx.payload[8] << 9) & 0x07FF);
+        pkt->ch[6] = ((rx.payload[8] >> 2 | rx.payload[9] << 6) & 0x07FF);
+        pkt->ch[7] = ((rx.payload[9] >> 5 | rx.payload[10] << 3) & 0x07FF);
+        pkt->ch[8] = ((rx.payload[11] | rx.payload[12] << 8) & 0x07FF);
+        pkt->ch[9] = ((rx.payload[12] >> 3 | rx.payload[13] << 5) & 0x07FF);
+        pkt->ch[10] = ((rx.payload[13] >> 6 | rx.payload[14] << 2 | rx.payload[15] << 10) & 0x07FF);
+        pkt->ch[11] = ((rx.payload[15] >> 1 | rx.payload[16] << 7) & 0x07FF);
+        pkt->ch[12] = ((rx.payload[16] >> 4 | rx.payload[17] << 4) & 0x07FF);
+        pkt->ch[13] = ((rx.payload[17] >> 7 | rx.payload[18] << 1 | rx.payload[19] << 9) & 0x07FF);
+        pkt->ch[14] = ((rx.payload[19] >> 2 | rx.payload[20] << 6) & 0x07FF);
+        pkt->ch[15] = ((rx.payload[20] >> 5 | rx.payload[21] << 3) & 0x07FF);
 
         pkt->crc8 = *rx.crc8;
         if (to_fc_range)

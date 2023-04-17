@@ -1,11 +1,11 @@
 {
-  "name": "crsf_bg_fc",
-  "version": "1.0.0",
+  "name": "ArduCRSF-FC",
+  "version": "1.0.1",
   "description": "Arduino library for communicating with receiver via CRSF protocol (just like flight controllers do)",
   "keywords": "CRSF, ELRS, Crossfire, Radio Control, RC, Flight Controller, FC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/boris-gu/crsf_bg_fc"
+    "url": "https://github.com/boris-gu/ArduCRSF-FC"
   },
   "authors": {
     "name": "Boris Gubanov",
